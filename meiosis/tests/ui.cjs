@@ -15,6 +15,8 @@ async function onward(page){await page.locator('[data-action=next],[data-action=
  await page.locator('#home-title').waitFor();await overflow(page,'desktop home');
  check('official logo loaded',await page.locator('.identity img').evaluate(el=>el.complete && el.naturalWidth>0));
  check('six class choices',await page.locator('.unit-card').count()===6);
+ check('homepage offers 30 questions',(await page.locator('[data-action=start][data-scope=all]').innerText()).includes('30 preguntas'));
+ check('each class offers five questions',await page.locator('.unit-card').evaluateAll(xs=>xs.every(el=>el.textContent.includes('5 preguntas'))));
  check('reduced motion uses last static stage',await page.locator('#intro-sequence').getAttribute('data-step')==='2');
  await page.screenshot({path:path.join(OUT,'home_desktop.png'),fullPage:true});
  await page.locator('[data-action=start][data-scope=all]').click();
@@ -33,14 +35,30 @@ async function onward(page){await page.locator('[data-action=next],[data-action=
   if(i===0){await page.reload();await page.locator('#feedback-title').waitFor();check('resume after reload',await page.locator('input[value=B]').isChecked());}
   await onward(page);
  }
- await page.locator('#result-title').waitFor();check('full score is 24/24',(await page.locator('.score-circle').innerText()).includes('24/24'));check('six per-class result rows',await page.locator('.result-row').count()===6);check('no error review for perfect attempt',await page.locator('[data-action=review]').count()===0);
+ await page.locator('#result-title').waitFor();check('full score is 30/30',(await page.locator('.score-circle').innerText()).includes('30/30'));check('six per-class result rows',await page.locator('.result-row').count()===6);check('each class result is 5/5',await page.locator('.result-fraction').evaluateAll(xs=>xs.every(el=>el.textContent==='5/5')));check('no error review for perfect attempt',await page.locator('[data-action=review]').count()===0);
  await overflow(page,'desktop results');await page.screenshot({path:path.join(OUT,'results_desktop.png'),fullPage:true});
  await page.getByRole('button',{name:'Elegir otro recorrido'}).click();await page.locator('[data-action=start][data-scope="2"]').click();
- check('scope completed from full course',(await page.locator('.score-circle').innerText()).includes('4/4'));
+ check('scope completed from full course',(await page.locator('.score-circle').innerText()).includes('5/5'));
  await page.getByRole('button',{name:'Reintentar este recorrido',exact:true}).click();
  const stored=await page.evaluate(()=>JSON.parse(localStorage.getItem('aurelio-spruce:meiosis:autoevaluacion:v1')));
- check('retry clears only selected class',Object.keys(stored.answers).length===20 && bank.questions.filter(q=>q.unit===2).every(q=>!stored.answers[q.id]));
+ check('retry clears only selected class',Object.keys(stored.answers).length===25 && bank.questions.filter(q=>q.unit===2).every(q=>!stored.answers[q.id]));
  await ctx.close();
+ const migration=await browser.newContext({reducedMotion:'reduce'});const mp=await migration.newPage();mp.on('pageerror',e=>errors.push(String(e)));await mp.goto(BASE);
+ const oldQuestions=bank.questions.filter(q=>Number(q.id.slice(4))<=24);
+ const oldAnswers=Object.fromEntries(oldQuestions.map(q=>[q.id,q.correct]));
+ async function restoreLegacy(overrides){await mp.evaluate(s=>localStorage.setItem('aurelio-spruce:meiosis:autoevaluacion:v1',JSON.stringify(s)),{schema:1,bank:'1.0.0',scope:'all',index:0,view:'results',answers:oldAnswers,attempt:2,...overrides});await mp.reload();}
+ await restoreLegacy({});await mp.locator('#question-title').waitFor();
+ check('old completed attempt opens first new question',await mp.locator('.question-card').getAttribute('data-question')==='MEI-25');
+ check('old attempt retains 24 answers',(await mp.locator('.quiz-top').innerText()).includes('24/30'));
+ let migrated=await mp.evaluate(()=>JSON.parse(localStorage.getItem('aurelio-spruce:meiosis:autoevaluacion:v1')));
+ check('migration retains all submitted choices',Object.entries(oldAnswers).every(([id,key])=>migrated.answers[id]===key));
+ check('migration advances bank version and keeps attempt',migrated.bank==='1.1.0'&&migrated.attempt===2);
+ await restoreLegacy({view:'quiz',index:7});
+ check('migration preserves question identity after insertion',await mp.locator('.question-card').getAttribute('data-question')==='MEI-08');
+ await restoreLegacy({scope:2,answers:Object.fromEntries(oldQuestions.filter(q=>q.unit===2).map(q=>[q.id,q.correct]))});
+ check('old completed class opens its new fifth question',await mp.locator('.question-card').getAttribute('data-question')==='MEI-26');
+ check('old class retains four answers',(await mp.locator('.quiz-top').innerText()).includes('4/5'));
+ await migration.close();
  const mobile=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'});const m=await mobile.newPage();m.on('pageerror',e=>errors.push(String(e)));await m.goto(BASE);await overflow(m,'mobile home');await m.screenshot({path:path.join(OUT,'home_mobile.png'),fullPage:true});
  await m.locator('[data-action=start][data-scope="6"]').click();check('mobile question map collapsed',!(await m.locator('.question-map').getAttribute('open')));
  await overflow(m,'mobile question');await m.screenshot({path:path.join(OUT,'question_mobile.png'),fullPage:true});
@@ -50,11 +68,11 @@ async function onward(page){await page.locator('[data-action=next],[data-action=
   if(i===1)await m.screenshot({path:path.join(OUT,'feedback_mobile.png'),fullPage:true});
   await onward(m);
  }
- check('mixed score is 1/4',(await m.locator('.score-circle').innerText()).includes('1/4'));
- check('mixed score percentage is 25%',(await m.locator('.score-circle').innerText()).includes('25%'));
+ check('mixed score is 1/5',(await m.locator('.score-circle').innerText()).includes('1/5'));
+ check('mixed score percentage is 20%',(await m.locator('.score-circle').innerText()).includes('20%'));
  await m.screenshot({path:path.join(OUT,'results_mobile.png'),fullPage:true});await overflow(m,'mobile results');
- await m.locator('[data-action=review]').click();check('review contains exactly three mistakes',await m.locator('.review-card').count()===3);await m.screenshot({path:path.join(OUT,'review_mobile.png'),fullPage:true});
- await m.getByRole('button',{name:'Volver a los resultados',exact:true}).last().click();await m.reload();await m.locator('#result-title').waitFor();check('results survive reload',(await m.locator('.score-circle').innerText()).includes('1/4'));
+ await m.locator('[data-action=review]').click();check('review contains exactly four mistakes',await m.locator('.review-card').count()===4);await m.screenshot({path:path.join(OUT,'review_mobile.png'),fullPage:true});
+ await m.getByRole('button',{name:'Volver a los resultados',exact:true}).last().click();await m.reload();await m.locator('#result-title').waitFor();check('results survive reload',(await m.locator('.score-circle').innerText()).includes('1/5'));
  await mobile.close();
  const small=await browser.newContext({viewport:{width:320,height:700},reducedMotion:'reduce'});const s=await small.newPage();await s.goto(BASE);await overflow(s,'320px home');await s.locator('[data-action=start][data-scope=all]').click();await overflow(s,'320px question');await small.close();
  const anim=await browser.newContext({viewport:{width:1100,height:900},reducedMotion:'no-preference'});const ap=await anim.newPage();await ap.goto(BASE);check('animation starts in auto',await ap.locator('#intro-sequence').getAttribute('data-step')==='auto');await ap.locator('#animation-toggle').click();check('animation can pause',(await ap.locator('#intro-sequence').getAttribute('class')).includes('paused'));await ap.locator('[data-action=animation-step][data-step="1"]').click();check('animation manual step selects meiosis I',await ap.locator('#intro-sequence').getAttribute('data-step')==='1');await anim.close();

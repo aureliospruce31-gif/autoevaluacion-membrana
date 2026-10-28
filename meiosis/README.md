@@ -1,6 +1,6 @@
 # Meiosis — Autoevaluación Aurelio–Spruce
 
-Autoevaluación formativa del microcurso **Biología Celular Esencial — Meiosis**. Incluye 24 preguntas, cuatro por videoclase, con una sola respuesta válida y explicación científica de las cuatro alternativas.
+Autoevaluación formativa del microcurso **Biología Celular Esencial — Meiosis**. Incluye 30 preguntas, cinco por videoclase, con una sola respuesta válida y explicación científica de las cuatro alternativas.
 
 ## Contenido y funcionamiento
 
@@ -14,6 +14,8 @@ Autoevaluación formativa del microcurso **Biología Celular Esencial — Meiosi
 Se puede realizar el recorrido completo o una clase. Las respuestas se comprueban de inmediato; el resultado incluye un desglose por clase y un repaso de los errores. Los reintentos no tienen límite. Las pistas no descuentan puntos y cada pregunta vale un punto.
 
 El avance se guarda en el navegador mediante `localStorage`. No se solicitan nombre, correo ni identificación. No se envían respuestas a un servidor, no hay seguimiento de alumnos ni registro de calificaciones en Payhip o Hotmart. Un intento conserva la primera elección comprobada de cada pregunta hasta que el estudiante decide reintentarlo.
+
+La versión 1.1.0 amplía el banco de 24 a 30 preguntas. Conserva las respuestas guardadas de la versión 1.0.0 y solicita completar las seis preguntas nuevas antes de mostrar el resultado ampliado. Los identificadores de las preguntas anteriores no cambian.
 
 ## Abrir y publicar
 

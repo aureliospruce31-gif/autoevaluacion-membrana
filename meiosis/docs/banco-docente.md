@@ -1,6 +1,6 @@
 # Meiosis — Banco docente y clave
 
-Aurelio–Spruce · 24 preguntas · 4 por videoclase.
+Aurelio–Spruce · 30 preguntas · 5 por videoclase.
 
 La clave y las explicaciones forman parte de la autoevaluación formativa.
 
@@ -80,6 +80,24 @@ Pista: Seguí un solo representante de cada par hasta el final de la segunda div
 - **C:** Ese es el complemento diploide no replicado. La meiosis completa reduce de dos juegos a uno por núcleo.
 - **D:** Ese es el recuento diploide después de S, antes de las divisiones. No es el resultado final de la meiosis.
 
+### MEI-25 · Un bivalente reúne dos cromosomas
+
+Una célula con 2n = 8 está en metafase I de una meiosis normal. Todos sus homólogos están asociados en bivalentes y las hermanas siguen unidas. ¿Qué recuento corresponde a toda la célula?
+
+A. 4 bivalentes, 8 cromosomas y 16 cromátidas
+B. 8 bivalentes, 8 cromosomas y 16 cromátidas
+C. 4 bivalentes, 4 cromosomas y 8 cromátidas
+D. 4 bivalentes, 16 cromosomas y 16 cromátidas
+
+**Clave: A.** Con 2n = 8 hay cuatro pares. Un bivalente contiene dos cromosomas homólogos duplicados y cuatro cromátidas: 4 × 2 = 8 cromosomas y 4 × 4 = 16 cromátidas.
+
+Pista: Separá tres niveles: el par de homólogos, cada cromosoma y sus cromátidas.
+
+- **A:** Los ocho cromosomas forman cuatro pares de homólogos. Cada par contiene dos cromosomas duplicados y, por lo tanto, cuatro cromátidas.
+- **B:** Ocho es el número de cromosomas, no el de pares. Cada bivalente reúne dos homólogos: hay cuatro bivalentes.
+- **C:** Un bivalente no cuenta como un único cromosoma. Sus dos homólogos conservan su identidad cromosómica.
+- **D:** Las hermanas aún asociadas no se cuentan como cromosomas independientes. Los cromosomas son ocho, cada uno con dos cromátidas.
+
 ## Videoclase 2 · Meiosis I
 
 PDF · unidad 2 · págs. 7–8
@@ -155,6 +173,24 @@ Pista: La ploidía cuenta juegos completos, no la longitud ni la compactación d
 - **B:** La fase S aumenta la cantidad de ADN de 2C a 4C y conserva la ploidía 2n.
 - **C:** Las hebras complementarias no se distribuyen como juegos cromosómicos durante la segregación meiótica.
 - **D:** Cada núcleo recibe un representante de cada tipo cromosómico en lugar de los dos del núcleo diploide. Ese reparto reduce de dos juegos a uno.
+
+### MEI-26 · Las conexiones ayudan al reparto
+
+Considerá una meiosis de mamífero en la que los quiasmas mantienen unidos a los homólogos. Si un par pierde prematuramente todas sus conexiones antes de metafase I, aunque las hermanas conserven cohesión, ¿qué consecuencia es esperable?
+
+A. La separación correcta queda garantizada porque cada homólogo conserva dos cromátidas
+B. Aumenta el riesgo de una orientación y segregación incorrectas de esos homólogos
+C. Los dos homólogos se fusionan y forman un cromosoma único
+D. Se inicia automáticamente una fase S que reconstruye el bivalente
+
+**Clave: B.** En este modelo, los quiasmas junto con la cohesión de las hermanas mantienen la asociación del bivalente y favorecen su biorientación. Perder esa asociación eleva el riesgo de error; no obliga a un único resultado en todos los casos.
+
+Pista: La cohesión entre hermanas y la conexión entre homólogos cumplen funciones relacionadas, pero diferentes.
+
+- **A:** La cohesión entre hermanas no sustituye la conexión entre los dos homólogos. Conservar dos cromátidas no garantiza su orientación hacia polos opuestos.
+- **B:** Las conexiones del bivalente ayudan a establecer una orientación estable de los homólogos hacia polos opuestos. Su pérdida puede comprometer el reparto.
+- **C:** La pérdida de conexiones separa unidades antes asociadas; no fusiona su ADN ni sus centrómeros.
+- **D:** La replicación no restituye por sí sola las conexiones entre homólogos. No hay una fase S de rescate como parte normal de esta transición.
 
 ## Videoclase 3 · Meiosis II
 
@@ -232,6 +268,24 @@ Pista: Seguí por separado la cromátida que participó y la que no participó e
 - **C:** El origen por replicación no obliga a que las hermanas sigan siendo idénticas después de un intercambio que afectó a una de ellas.
 - **D:** La relación de hermanas conserva su origen por replicación. Recombinar segmentos no las convierte en los dos cromosomas parentales originales.
 
+### MEI-27 · Qué significa división ecuacional
+
+¿Por qué se describe a meiosis II como una división ecuacional, aunque disminuya la cantidad de ADN por núcleo?
+
+A. Porque cada núcleo pasa de 2n a n al separar cromosomas homólogos
+B. Porque el ADN se replica al mismo ritmo que se reparte
+C. Porque cada núcleo pasa de n, 2C a n, 1C al separar cromátidas hermanas
+D. Porque cada cromátida pierde la mitad de sus genes antes de segregarse
+
+**Clave: C.** En la meiosis II normal, el resultado por núcleo es n, 1C a partir de n, 2C. Ecuacional alude a conservar la ploidía haploide, no a conservar la cantidad de ADN por núcleo.
+
+Pista: La cantidad de ADN y el número de juegos cromosómicos no son la misma medida.
+
+- **A:** La reducción de 2n a n corresponde a meiosis I. En la segunda división se separan las hermanas de cromosomas ya presentes en un conjunto haploide.
+- **B:** No hay una nueva fase S entre ambas divisiones. La reducción de ADN por núcleo no se compensa con una replicación simultánea.
+- **C:** Los núcleos conservan un juego cromosómico y reciben una sola cromátida de cada cromosoma duplicado. La ploidía sigue siendo n, mientras el ADN baja de 2C a 1C.
+- **D:** El reparto de hermanas no elimina sistemáticamente genes de cada cromátida. Distribuye moléculas de ADN completas asociadas a sus proteínas.
+
 ## Videoclase 4 · Profase I y recombinación homóloga
 
 PDF · unidades 3 y 4 · págs. 9–18
@@ -307,6 +361,24 @@ Pista: Distinguí el momento molecular del intercambio de la conexión visible d
 - **B:** El quiasma no es un componente nuevo del complejo sinaptonémico. La conexión depende de la historia del intercambio y de la cohesión.
 - **C:** El crossing-over es un acontecimiento molecular previo; el quiasma es la conexión citológica que puede persistir al separarse parcialmente los ejes.
 - **D:** El bivalente mantiene dos cromosomas homólogos. La conexión no los fusiona ni modifica el número de juegos de la célula.
+
+### MEI-28 · Interferencia no significa prohibición
+
+En un ejemplo didáctico, la probabilidad de un segundo entrecruzamiento en una región vecina sería 0,25 si ambos eventos fueran independientes. Al condicionar por un primer entrecruzamiento cercano, es 0,10. ¿Qué interpretación es correcta?
+
+A. Un segundo entrecruzamiento cercano es imposible
+B. El primer entrecruzamiento aumenta la probabilidad del segundo
+C. La interferencia obliga a reparar todas las roturas como non-crossover
+D. La probabilidad disminuye, pero el segundo entrecruzamiento sigue siendo posible
+
+**Clave: D.** La interferencia positiva reduce la probabilidad de entrecruzamientos próximos respecto de la independencia. Es un patrón probabilístico de distribución, no una prohibición absoluta. Los valores del ejemplo son hipotéticos.
+
+Pista: Compará la probabilidad condicionada con la esperada bajo independencia.
+
+- **A:** La probabilidad observada es 0,10, un valor mayor que cero. Hay una disminución, no una imposibilidad.
+- **B:** 0,10 es menor que 0,25. Los valores describen una reducción de la probabilidad del segundo evento cercano.
+- **C:** Estos datos comparan la ubicación de dos entrecruzamientos. No demuestran que todas las demás roturas sigan una misma vía de reparación.
+- **D:** La comparación 0,10 < 0,25 ilustra interferencia positiva entre entrecruzamientos. La probabilidad sigue siendo distinta de cero.
 
 ## Videoclase 5 · Meiosis y diversidad genética
 
@@ -384,6 +456,24 @@ Pista: Distinguí generar una variante de cambiar las asociaciones entre variant
 - **C:** Reorganizar información o cambiar una secuencia no implica ganar cromosomas. El número cromosómico es otra variable.
 - **D:** Las mutaciones pueden surgir en diferentes contextos celulares. La recombinación meiótica estudiada transcurre durante profase I, no se limita a meiosis II.
 
+### MEI-29 · La fecundación combina aportes
+
+Dos individuos diploides son Aa para un locus autosómico. Cada uno produce gametos A y a en proporción 1:1. Suponé unión al azar, sin selección ni diferencias de viabilidad entre cigotos. ¿Cuál es la probabilidad de obtener un cigoto Aa?
+
+A. 1/2
+B. 1/4
+C. 3/4
+D. 1
+
+**Clave: A.** La segregación meiótica determina los aportes de cada gameto y la fecundación los combina. Con los supuestos declarados, P(Aa) = (1/2 × 1/2) + (1/2 × 1/2) = 1/2; P(AA) = P(aa) = 1/4.
+
+Pista: Sumá las dos maneras de recibir un alelo A y un alelo a.
+
+- **A:** Hay dos uniones que producen Aa: A de un progenitor con a del otro y la combinación inversa. Cada una tiene probabilidad 1/4; juntas suman 1/2.
+- **B:** 1/4 es la probabilidad de cada combinación concreta de aportes. El heterocigota Aa puede resultar de dos combinaciones diferentes.
+- **C:** 3/4 reúne AA y Aa en este modelo. El enunciado pregunta exclusivamente por el genotipo heterocigota Aa.
+- **D:** Cada progenitor también puede aportar el mismo alelo que el otro. Las uniones AA y aa tienen probabilidad distinta de cero.
+
 ## Videoclase 6 · Errores de segregación e integración
 
 PDF · unidad 7 y síntesis · págs. 24–27
@@ -459,3 +549,21 @@ Pista: Considerá las divisiones celulares que ocurren una vez formado el cigoto
 - **B:** Las constituciones celulares diferentes no demuestran ese doble fallo. También pueden originarse por errores mitóticos posteriores a la fecundación.
 - **C:** En el modelo diploide estudiado, haploidía y diploidía difieren en el número de juegos. Esa afirmación no explica la formación de los linajes.
 - **D:** El crossing-over reorganiza segmentos sin aumentar necesariamente el número de juegos. No explica por sí solo un mosaicismo de número cromosómico.
+
+### MEI-30 · Un juego completo adicional
+
+En una especie cuyo complemento diploide es 2n = 6, un núcleo presenta nueve cromosomas: tres representantes de cada uno de los tres tipos cromosómicos. ¿Cómo se clasifica este cambio numérico?
+
+A. Trisomía de un único tipo cromosómico: 2n + 1
+B. Triploidía: 3n, con tres juegos completos
+C. Monosomía de un único tipo cromosómico: 2n − 1
+D. Diploidía replicada: 2n, 4C
+
+**Clave: B.** La poliploidía modifica el número de juegos completos; la triploidía es 3n. Las aneuploidías alteran la representación de cromosomas individuales, como una trisomía aislada 2n + 1.
+
+Pista: Comprobá si el cambio afecta a un tipo cromosómico o a todos los tipos de un juego.
+
+- **A:** En esta especie, una trisomía aislada daría siete cromosomas: tres de un tipo y dos de cada uno de los otros. Aquí hay tres de todos los tipos.
+- **B:** El número haploide es tres. Tener tres representantes de cada tipo implica 3 × 3 = 9 cromosomas y tres juegos completos.
+- **C:** Una monosomía aislada daría cinco cromosomas en esta especie. El núcleo descrito tiene un juego completo adicional.
+- **D:** La replicación conserva seis cromosomas mientras sus hermanas siguen asociadas. No produce nueve cromosomas con tres representantes de cada tipo.

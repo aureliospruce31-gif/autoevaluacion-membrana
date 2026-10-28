@@ -16,12 +16,19 @@
   function loadState() {
     try {
       const saved=JSON.parse(localStorage.getItem(STORAGE_KEY));
-      if(!saved || saved.schema!==1 || saved.bank!==BANK.version) return fresh();
+      const previousBank=saved?.bank==='1.0.0' && BANK.version==='1.1.0';
+      if(!saved || saved.schema!==1 || (saved.bank!==BANK.version && !previousBank)) return fresh();
       const s=fresh();
       s.answers=Object.fromEntries(Object.entries(saved.answers||{}).filter(([id,key]) => questionById[id]?.options.some(o=>o.key===key)));
       s.scope=saved.scope==='all' || unitById[saved.scope]?saved.scope:'all';
       s.view=['home','quiz','results','review'].includes(saved.view)?saved.view:'home';
       s.index=Number.isInteger(saved.index)?saved.index:0;
+      if(previousBank) {
+        const current=BANK.questions.filter(q=>s.scope==='all'||q.unit===Number(s.scope));
+        const previous=current.filter(q=>Number(q.id.slice(4))<=24);
+        const previousId=previous[s.index]?.id;
+        s.index=Math.max(0,current.findIndex(q=>q.id===previousId));
+      }
       s.attempt=Number.isInteger(saved.attempt)&&saved.attempt>0?saved.attempt:1;
       return s;
     } catch { persistenceAvailable=false;return fresh(); }
@@ -53,7 +60,7 @@
           <h1 id="home-title" tabindex="-1">Comprobá cómo comprendés la meiosis.</h1>
           <p class="lede">Seguí cromosomas, interpretá los esquemas y conectá cada resultado con el mecanismo que lo produce.</p>
           <div class="cta-row"><button class="button" data-action="start" data-scope="all">${count===total?'Ver resultados':count?`Continuar evaluación · ${count}/${total}`:`Comenzar las ${total} preguntas`} <span aria-hidden="true">→</span></button></div>
-          <p class="small muted">24 preguntas · 6 clases · A tu ritmo</p>
+          <p class="small muted">${total} preguntas · ${BANK.units.length} clases · A tu ritmo</p>
           <p class="save-notice">${esc(storageText())}</p>
         </div>
         <div class="hero-visual">
@@ -70,10 +77,10 @@
       </section>
       <div class="feature-strip"><span>Explicaciones de las cuatro alternativas</span><span>Esquemas para razonar</span><span>Reintentos sin límite</span></div>
       <section class="unit-section" aria-labelledby="units-title">
-        <div class="section-heading"><h2 id="units-title">También podés repasar por clase</h2><span class="small muted">Cuatro preguntas en cada recorrido</span></div>
+        <div class="section-heading"><h2 id="units-title">También podés repasar por clase</h2><span class="small muted">Cinco preguntas en cada recorrido</span></div>
         <div class="unit-grid">${BANK.units.map(u=>{
           const qs=BANK.questions.filter(q=>q.unit===u.id),done=answeredCount(qs);
-          return `<button class="unit-card" data-action="start" data-scope="${u.id}"><span class="num">VIDEOCLASE ${String(u.id).padStart(2,'0')}</span><strong>${esc(u.title)}</strong><span class="meta"><span>4 preguntas <span aria-hidden="true">→</span></span><span>${done?`${done}/4 respondidas`:'Sin comenzar'}</span></span></button>`;
+          return `<button class="unit-card" data-action="start" data-scope="${u.id}"><span class="num">VIDEOCLASE ${String(u.id).padStart(2,'0')}</span><strong>${esc(u.title)}</strong><span class="meta"><span>${qs.length} preguntas <span aria-hidden="true">→</span></span><span>${done?`${done}/${qs.length} respondidas`:'Sin comenzar'}</span></span></button>`;
         }).join('')}</div>
         <p class="source-note">Para acompañar las seis videoclases y el PDF del microcurso. Cada respuesta incluye una referencia de lectura. El resultado es orientativo y podés repetir la evaluación para seguir aprendiendo.</p>
       </section>`;
